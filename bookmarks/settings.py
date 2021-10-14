@@ -71,8 +71,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "djng.tst1@gmail.com"
+EMAIL_HOST_PASSWORD = 'whiteMoch@'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {
@@ -85,6 +93,10 @@ DATABASES = {
     }
 }
 
+LOGIN_REDIRECT_URL = 'dashboard'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
