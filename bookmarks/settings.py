@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     'django_extensions',
     #images app
     'images.apps.ImagesConfig',
+    #thumbnail for the images
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +86,11 @@ EMAIL_HOST_PASSWORD = 'whiteMoch@'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail',
+    args=[u.username])
+    }
 
 #for custom authentication checking email or username
 AUTHENTICATION_BACKENDS = [
